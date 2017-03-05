@@ -19,7 +19,7 @@ import javax.swing.JOptionPane;
 public class Connectionfactory {
 
     private static final String DRIVER = "con.mysql.jdbc.Driver";
-    private static final String URL = "jdbc:mysql://localhost:3306/agenda";
+    private static final String URL = "jdbc:mysql://localhost:3306/dbfloratech";
     private static final String USER = "root";
     private static final String PASS = "";
     public Statement stmt = null; //prepara sql e executar
@@ -53,6 +53,4 @@ public class Connectionfactory {
             JOptionPane.showMessageDialog(null," Erro Executa Sql: \n " + ex.getMessage());
         }
     }
-
-    
 }

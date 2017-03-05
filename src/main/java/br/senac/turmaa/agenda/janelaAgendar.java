@@ -14,8 +14,13 @@ public class janelaAgendar extends javax.swing.JFrame {
     /**
      * Creates new form janelaAgendar
      */
+    Connectionfactory con = new Connectionfactory();
+    pessoaDAO dao = new pessoaDAO();
+     pessoa Pessoa = new pessoa();
+
     public janelaAgendar() {
         initComponents();
+
     }
 
     /**
@@ -55,6 +60,11 @@ public class janelaAgendar extends javax.swing.JFrame {
         lblEmail.setText("E-mail");
 
         btnCadastrar.setText("Cadastrar");
+        btnCadastrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCadastrarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -127,6 +137,17 @@ public class janelaAgendar extends javax.swing.JFrame {
     private void txtEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtEmailActionPerformed
+
+    private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
+
+       
+        Pessoa.setNome(txtNome.getText());
+        Pessoa.setData(txtDataNascimento.getText());
+        Pessoa.setTelefone(txtTelefone.getText());
+        Pessoa.setEmail(txtEmail.getText());
+        dao.Cadastrar(Pessoa);
+
+    }//GEN-LAST:event_btnCadastrarActionPerformed
 
     /**
      * @param args the command line arguments

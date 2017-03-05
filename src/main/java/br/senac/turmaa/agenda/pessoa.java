@@ -5,7 +5,7 @@
  */
 package br.senac.turmaa.agenda;
 
-import java.text.SimpleDateFormat;
+
 
 /**
  *
@@ -14,7 +14,7 @@ import java.text.SimpleDateFormat;
 public class pessoa {
 
     private String Nome;
-    private SimpleDateFormat DataNascimento;
+    private String DataNascimento;
     private String Telefone;
     private String Email;
 
@@ -28,12 +28,12 @@ public class pessoa {
 
     }
 
-    public SimpleDateFormat setData(SimpleDateFormat novoDataNascimento) {
+    public String setData(String novoDataNascimento) {
         return this.DataNascimento = novoDataNascimento;
 
     }
 
-    public SimpleDateFormat getData() {
+    public String getData() {
         return this.DataNascimento;
 
     }
