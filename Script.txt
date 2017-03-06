@@ -1,0 +1,9 @@
+create database Agenda;
+use Agenda;
+
+Create table Pessoas(id int not null primary key, 
+nome Varchar(50),
+telefone varchar(12),
+dataNascimento date,
+dataRegistro date,
+Email varchar(50));
