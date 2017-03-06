@@ -12,14 +12,11 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author Fernanda
- */
+
 public class Connectionfactory {
 
     private static final String DRIVER = "con.mysql.jdbc.Driver";
-    private static final String URL = "jdbc:mysql://localhost:3306/dbfloratech";
+    private static final String URL = "jdbc:mysql://localhost:3306/bdagenda";
     private static final String USER = "root";
     private static final String PASS = "";
     public Statement stmt = null; //prepara sql e executar

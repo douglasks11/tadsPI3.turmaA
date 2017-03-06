@@ -5,6 +5,8 @@
  */
 package br.senac.turmaa.agenda;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author DouglasOliveira
@@ -16,7 +18,7 @@ public class janelaAgendar extends javax.swing.JFrame {
      */
     Connectionfactory con = new Connectionfactory();
     pessoaDAO dao = new pessoaDAO();
-     pessoa Pessoa = new pessoa();
+    pessoa Pessoa = new pessoa();
 
     public janelaAgendar() {
         initComponents();
@@ -43,7 +45,50 @@ public class janelaAgendar extends javax.swing.JFrame {
         lblEmail = new javax.swing.JLabel();
         btnCadastrar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+
+        txtNome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNomeActionPerformed(evt);
+            }
+        });
+        txtNome.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNomeKeyTyped(evt);
+            }
+        });
+
+        txtTelefone.setText("(  )");
+        txtTelefone.setToolTipText("");
+        txtTelefone.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtTelefoneActionPerformed(evt);
+            }
+        });
+        txtTelefone.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtTelefoneKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtTelefoneKeyTyped(evt);
+            }
+        });
+
+        txtDataNascimento.setText("  /  / "); // NOI18N
+        txtDataNascimento.setToolTipText("");
+        txtDataNascimento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtDataNascimentoActionPerformed(evt);
+            }
+        });
+        txtDataNascimento.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtDataNascimentoKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtDataNascimentoKeyTyped(evt);
+            }
+        });
 
         txtEmail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -74,9 +119,9 @@ public class janelaAgendar extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtNome)
-                    .addComponent(txtTelefone, javax.swing.GroupLayout.DEFAULT_SIZE, 360, Short.MAX_VALUE)
-                    .addComponent(txtEmail, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 360, Short.MAX_VALUE)
-                    .addComponent(txtDataNascimento, javax.swing.GroupLayout.DEFAULT_SIZE, 360, Short.MAX_VALUE)
+                    .addComponent(txtTelefone, javax.swing.GroupLayout.DEFAULT_SIZE, 342, Short.MAX_VALUE)
+                    .addComponent(txtEmail, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 342, Short.MAX_VALUE)
+                    .addComponent(txtDataNascimento, javax.swing.GroupLayout.DEFAULT_SIZE, 342, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblNome)
@@ -101,7 +146,7 @@ public class janelaAgendar extends javax.swing.JFrame {
                 .addComponent(lblDataNascimento)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtDataNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
                 .addComponent(lblTelefone)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -140,14 +185,87 @@ public class janelaAgendar extends javax.swing.JFrame {
 
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
 
-       
         Pessoa.setNome(txtNome.getText());
+
         Pessoa.setData(txtDataNascimento.getText());
+
         Pessoa.setTelefone(txtTelefone.getText());
+
         Pessoa.setEmail(txtEmail.getText());
+
         dao.Cadastrar(Pessoa);
 
+
     }//GEN-LAST:event_btnCadastrarActionPerformed
+
+    private void txtDataNascimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDataNascimentoActionPerformed
+
+    }//GEN-LAST:event_txtDataNascimentoActionPerformed
+
+    private void txtTelefoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTelefoneActionPerformed
+
+    }//GEN-LAST:event_txtTelefoneActionPerformed
+
+    private void txtTelefoneKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTelefoneKeyPressed
+
+    }//GEN-LAST:event_txtTelefoneKeyPressed
+
+    private void txtDataNascimentoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDataNascimentoKeyPressed
+
+    }//GEN-LAST:event_txtDataNascimentoKeyPressed
+
+    private void txtDataNascimentoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDataNascimentoKeyTyped
+        validarNumerosKeyTyped(evt);
+    }//GEN-LAST:event_txtDataNascimentoKeyTyped
+
+    private void txtTelefoneKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTelefoneKeyTyped
+        validarNumerosKeyTyped(evt);
+    }//GEN-LAST:event_txtTelefoneKeyTyped
+
+    private void txtNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNomeActionPerformed
+
+    private void txtNomeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNomeKeyTyped
+        validarLetrasKeyTyped(evt);        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNomeKeyTyped
+
+    private void validarNumerosKeyTyped(java.awt.event.KeyEvent evt) {
+        char validarNumeros = evt.getKeyChar();
+        if ((validarNumeros < '0' || validarNumeros > '9')
+                && (validarNumeros < '(' || validarNumeros > '(')
+                && (validarNumeros < ')' || validarNumeros > ')')
+                && (validarNumeros < ' ' || validarNumeros > ' ')
+                && (validarNumeros < '-' || validarNumeros > '-')
+                && (validarNumeros < '.' || validarNumeros > '.')) {
+            evt.consume();
+        }
+
+    }
+
+    private void validarEmailKeyTyped(java.awt.event.KeyEvent evt) {
+        char validarEmail = evt.getKeyChar();
+
+        if ((validarEmail < 'a' || validarEmail > 'z')
+                && (validarEmail < 'A' || validarEmail > 'Z')
+                && (validarEmail < '0' || validarEmail > '9')
+                && (validarEmail < '-' || validarEmail > '-')
+                && (validarEmail < '_' || validarEmail > '_')
+                && (validarEmail < '@' || validarEmail > '@')
+                && (validarEmail < ' ' || validarEmail > ' ')
+                && (validarEmail < '.' || validarEmail > '.')) {
+            evt.consume();
+        }
+    }
+
+    private void validarLetrasKeyTyped(java.awt.event.KeyEvent evt) {
+        char validarLetras = evt.getKeyChar();
+        if ((validarLetras < 'a' || validarLetras > 'z')
+                && (validarLetras < 'A' || validarLetras > 'Z')
+                && (validarLetras < ' ' || validarLetras > ' ')) {
+            evt.consume();
+        }
+    }
 
     /**
      * @param args the command line arguments

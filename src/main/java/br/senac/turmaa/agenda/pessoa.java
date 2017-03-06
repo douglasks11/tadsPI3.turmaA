@@ -5,8 +5,6 @@
  */
 package br.senac.turmaa.agenda;
 
-
-
 /**
  *
  * @author DouglasOliveira
@@ -17,6 +15,24 @@ public class pessoa {
     private String DataNascimento;
     private String Telefone;
     private String Email;
+    private int id;
+    private String DataRegistro;
+
+    public int setId(int novoId) {
+        return this.id = novoId;
+    }
+
+    public int getId() {
+        return this.id;
+    }
+
+    public String setDataRegistro(String novoDataRegistro) {
+        return this.DataRegistro = novoDataRegistro;
+    }
+
+    public String getDataRegistro() {
+        return this.DataRegistro;
+    }
 
     public String setNome(String novoNome) {
         return this.Nome = novoNome;

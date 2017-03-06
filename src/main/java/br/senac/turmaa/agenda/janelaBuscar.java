@@ -5,6 +5,11 @@
  */
 package br.senac.turmaa.agenda;
 
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author DouglasOliveira
@@ -16,6 +21,45 @@ public class janelaBuscar extends javax.swing.JFrame {
      */
     public janelaBuscar() {
         initComponents();
+    }
+
+    public void read() throws SQLException {
+        DefaultTableModel modelo = (DefaultTableModel) tblBuscar.getModel();
+        modelo.setNumRows(0);
+        pessoaDAO dao = new pessoaDAO();
+
+        for (pessoa p : dao.retornaTodas()) {
+            modelo.addRow(new Object[]{
+                p.getId(),
+                p.getNome(),
+                p.getData(),
+                p.getDataRegistro(),
+                p.getTelefone(),
+                p.getEmail()
+
+            });
+
+        }
+
+    }
+
+    public void readDesc(String desc) throws SQLException {
+        DefaultTableModel modelo = (DefaultTableModel) tblBuscar.getModel();
+        modelo.setNumRows(0);
+        pessoaDAO dao = new pessoaDAO();
+
+        for (pessoa p : dao.retornadesc(desc)) {
+            modelo.addRow(new Object[]{
+                p.getId(),
+                p.getNome(),
+                p.getData(),
+                p.getDataRegistro(),
+                p.getTelefone(),
+                p.getEmail()
+
+            });
+
+        }
     }
 
     /**
@@ -33,7 +77,7 @@ public class janelaBuscar extends javax.swing.JFrame {
         btnBuscar = new javax.swing.JButton();
         txtBuscar = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         tblBuscar.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -64,6 +108,17 @@ public class janelaBuscar extends javax.swing.JFrame {
         }
 
         btnBuscar.setText("Buscar");
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarActionPerformed(evt);
+            }
+        });
+
+        txtBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtBuscarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -105,6 +160,32 @@ public class janelaBuscar extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+        if (!txtBuscar.getText().equals("")) {
+
+            try {
+                readDesc(txtBuscar.getText());
+
+            } catch (SQLException ex) {
+                Logger.getLogger(janelaBuscar.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } else {
+
+            try {
+                read();
+            } catch (SQLException ex) {
+                Logger.getLogger(janelaBuscar.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+        }
+
+
+    }//GEN-LAST:event_btnBuscarActionPerformed
+
+    private void txtBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBuscarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtBuscarActionPerformed
 
     /**
      * @param args the command line arguments
